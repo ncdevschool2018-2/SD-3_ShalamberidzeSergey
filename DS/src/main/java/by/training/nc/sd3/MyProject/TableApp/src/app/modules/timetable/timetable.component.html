@@ -1,0 +1,183 @@
+<button style="height:80px;width:150px;"
+        class="btn btn-primary margin-left"
+        (click)="ProjectModal()"
+><h4>Add Project</h4></button>
+
+<button style="height:80px;width:150px;"
+        class="btn btn-primary margin-left"
+        (click)="TaskModal()"
+><h4>Add Task</h4></button>
+
+<button style="height:80px;width:150px;"
+        class="btn btn-primary margin-left"
+        (click)="UserModal()"
+><h4>Add User</h4></button>
+
+<button style="height:30px;width:120px;" onclick="myFunction()"
+        class="bmargin-left btn-primary">Sort by due date</button>
+
+
+<table style="width:97%">
+  <caption><h1>Schedule</h1></caption>
+  <tr>
+    <th>Project Code</th>
+    <th>Task</th>
+    <th>Priority</th>
+    <th>Status</th>
+    <th>Created</th>
+    <th>Updated</th>
+    <th>Due Date</th>
+    <th>Estimation</th>
+    <th>Assignee</th>
+    <th>Description</th>
+  </tr>
+  <tr
+    class="task"
+    *ngFor="let task of tasks | sortBy: 'taskcode' ">
+    <td class = "name">{{task.projectcode}}</td>
+    <td class = "name">{{task.taskcode}}</td>
+    <td class = "name">{{task.priority}}</td>
+    <td class = "name">{{task.status}}</td>
+    <td class = "date">{{task.created | date}}</td>
+    <td class = "date">{{task.updated | date}}</td>
+    <td class = "name">{{task.duedate | date}}</td>
+    <td class = "name">{{task.estimation}}</td>
+    <td class = "name">{{task.assignee}}</td>
+    <td class = "name">{{task.description}}</td>
+  </tr>
+</table>
+
+<br>
+
+
+<ng-template #addProjectTemplate>
+  <div class="modal-header" style="background-color: lightcyan;">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close"
+            (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  <br>
+  </div>
+  <div class="modal-body" style="background-color: lightyellow;">
+
+    <p style="font-size:20px">Code</p>
+    <input type="number" name="code" style="height:28px;width:100%;"
+      (change)="addcode = $event.target.value"
+    >
+    <br>
+    <p style="font-size:20px">Summary</p>
+    <textarea name="summary" style="height:80px;width:100%;"
+      (change)="addsummary = $event.target.value"
+    ></textarea>
+    <br><br><br>
+    <button
+      class="btn btn-primary"
+      (click)="addProject()"
+    >Add Project</button>
+  </div>
+</ng-template>
+
+
+
+
+
+<ng-template #addTaskTemplate>
+  <div class="modal-header" style="background-color: lightcyan;">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close"
+            (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <br>
+  </div>
+  <div class="modal-body" style="background-color: lightyellow;">
+    <p style="font-size: 20px" > Project Code</p>
+    <input type="number" name="projectcode" style="height:28px;width:98%;"
+           (change)="addprojectcode = $event.target.value"
+    >
+    <br>
+    <p style="font-size: 20px" > Task Code</p>
+    <input type="number" name="taskcode" style="height:28px;width:98%;"
+           (change)="addtaskcode = $event.target.value"
+    >
+    <br>
+    <p style="font-size:20px">Description</p>
+    <textarea name="description" style="height:80px;width:98%;"
+              (change)="adddescription = $event.target.value"
+    ></textarea>
+    <br>
+    <p style="font-size:20px">Priority</p>
+    <select style="height:28px;width:98%;"
+            (change)="addpriority = $event.target.value"
+    >
+      <option>(Choose one)</option>
+      <option>blocker</option>
+      <option>critical</option>
+      <option>major</option>
+      <option>normal</option>
+      <option>minor</option>
+    </select>
+    <br>
+    <p style="font-size:20px">Due Date</p>
+    <input type="date" name="DDate" style="height:28px;width:98%;"
+           (change)="addduedate = $event.target.value"
+    >
+    <br>
+    <p style="font-size:20px">Estimation</p>
+    <input type="text" name="Estim" style="height:28px;width:98%;"
+           (change)="addestimation = $event.target.value"
+    >
+    <br>
+    <p style="font-size:20px">Assignee</p>
+    <select style="height:28px;width:98%;"
+            (change)="addassignee = $event.target.value"
+    >
+      <option>(Choose one)</option>
+      <option>Project manager</option>
+      <option>Developer</option>
+      <option>Tester</option>
+    </select>
+    <br><br><br>
+    <button
+      class="btn btn-primary"
+      (click)="addTask()"
+    >Add Task</button>
+  </div>
+</ng-template>
+
+
+
+
+
+<ng-template #addUserTemplate>
+  <div class="modal-header" style="background-color: lightcyan;">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close"
+            (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <br>
+  </div>
+  <div class="modal-body" style="background-color: lightyellow;">
+    <p style="font-size:20px">Personal Data</p>
+    <input type="text" name="personaldata" style="height:28px;width:90%;"
+           (change)="addpersonaldata = $event.target.value"
+    >
+    <br>
+    <p style="font-size:20px">User Role</p>
+    <select style="height:28px;width:90%;"
+            (change)="adduserrole = $event.target.value"
+    >
+      <option>(Choose one)</option>
+      <option>Project manager</option>
+      <option>Developer</option>
+      <option>Tester</option>
+    </select>
+    <br> <br>
+    <button
+      class="btn btn-primary"
+      (click)="addUser()"
+    >Add User</button>
+  </div>
+</ng-template>

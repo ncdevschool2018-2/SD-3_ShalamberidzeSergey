@@ -1,0 +1,17 @@
+[
+  {"id": "1", "taskcode": "701", "projectcode": "01", "description": "text1", "priority": "major",
+    "created": "1/2/2018", "updated": "11/10/2018", "duedate": "8/11/2018", "estimation": "5:00",
+    "assignee": "Developer", "status": "open"},
+  {"id": "2", "taskcode": "102", "projectcode": "01", "description": "text2", "priority": "minor",
+    "created": "3/2/2018", "updated": "10/10/2018", "duedate": "11/17/2018", "estimation": "3:30",
+    "assignee": "Developer", "status": "open"},
+  {"id": "3", "taskcode": "103", "projectcode": "01", "description": "text3", "priority": "minor",
+    "created": "10/4/2018", "updated": "11/10/2018", "duedate": "11/17/2018", "estimation": "2:00",
+    "assignee": "Tester", "status": "open"},
+  {"id": "4", "taskcode": "201", "projectcode": "02", "description": "text4", "priority": "major",
+    "created": "8/4/2018", "updated": "10/10/2018", "duedate": "5/12/2018", "estimation": "8:00",
+    "assignee": "Tester", "status": "open"},
+  {"id": "5", "taskcode": "202", "projectcode": "02", "description": "text5", "priority": "minor",
+    "created": "7/25/2018", "updated": "10/10/2018", "duedate": "10/12/2018", "estimation": "0:30",
+    "assignee": "Tester", "status": "open"}
+]
